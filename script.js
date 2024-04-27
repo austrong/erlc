@@ -31,11 +31,12 @@ function createUnitStrip(callsign) {
   const locationInput = document.createElement("input");
   locationInput.type = "text";
   locationInput.placeholder = "Location";
-  locationInput.style.width = "75%";
+  locationInput.style.width = "calc(50% - 5px)"; // Adjusted width
   
   const notesInput = document.createElement("input");
   notesInput.type = "text";
   notesInput.placeholder = "Enter notes";
+  notesInput.style.width = "calc(50% - 5px)"; // Adjusted width
   
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
@@ -59,6 +60,7 @@ function createUnitStrip(callsign) {
   // Add unit strip to array
   unitStrips.push(unitStrip);
 }
+
 
 // Event listener for adding unit strip
 document.getElementById("callsignInput").addEventListener("keypress", function(e) {
