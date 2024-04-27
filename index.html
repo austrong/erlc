@@ -58,10 +58,27 @@
 
       // Add event listener to the status dropdown
       statusSelect.addEventListener("change", function() {
-        if (statusSelect.value === "panic") {
-          statusSelect.style.backgroundColor = "orange";
-        } else {
-          statusSelect.style.backgroundColor = ""; // Reset background color
+        switch (statusSelect.value) {
+          case "panic":
+            statusSelect.style.backgroundColor = "orange";
+            break;
+          case "available":
+            statusSelect.style.backgroundColor = "lightgreen";
+            break;
+          case "enroute":
+            statusSelect.style.backgroundColor = "lightblue";
+            break;
+          case "on-scene":
+            statusSelect.style.backgroundColor = "red";
+            break;
+          case "unavailable":
+            statusSelect.style.backgroundColor = "black";
+            statusSelect.style.color = "white";
+            break;
+          default:
+            statusSelect.style.backgroundColor = ""; // Reset background color
+            statusSelect.style.color = ""; // Reset text color
+            break;
         }
       });
       
