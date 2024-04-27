@@ -27,14 +27,25 @@ function createUnitStrip(callsign) {
     statusOption.textContent = option;
     statusSelect.appendChild(statusOption);
   });
+
+  // Add event listener to the status dropdown
+  statusSelect.addEventListener("change", function() {
+    if (statusSelect.value === "panic") {
+      statusSelect.style.backgroundColor = "orange";
+    } else {
+      statusSelect.style.backgroundColor = ""; // Reset background color
+    }
+  });
+  
+  const locationInput = document.createElement("input");
+  locationInput.type = "text";
+  locationInput.placeholder = "Location";
+  locationInput.style.width = "calc(50% - 5px)"; // Adjusted width
   
   const notesInput = document.createElement("input");
   notesInput.type = "text";
-  notesInput.placeholder = "Notes";
-
-  const vehicleInput = document.createElement("input");
-  vehicleInput.type = "text";
-  vehicleInput.placeholder = "Vehicle";
+  notesInput.placeholder = "Enter notes";
+  notesInput.style.width = "calc(50% - 5px)"; // Adjusted width
   
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
@@ -48,7 +59,7 @@ function createUnitStrip(callsign) {
   // Append elements to unit strip
   unitStrip.appendChild(callsignInput);
   unitStrip.appendChild(statusSelect);
-  unitStrip.appendChild(vehicleInput);
+  unitStrip.appendChild(locationInput);
   unitStrip.appendChild(notesInput);
   unitStrip.appendChild(deleteButton);
   
@@ -58,6 +69,7 @@ function createUnitStrip(callsign) {
   // Add unit strip to array
   unitStrips.push(unitStrip);
 }
+
 
 // Event listener for adding unit strip
 document.getElementById("callsignInput").addEventListener("keypress", function(e) {
