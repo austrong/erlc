@@ -90,6 +90,11 @@
       locationInput.type = "text";
       locationInput.placeholder = "Location";
       locationInput.style.width = "100px"; // Set width to around 100px
+
+            const callInput = document.createElement("input");
+      callInput.type = "text";
+      callInput.placeholder = "Call #";
+      callInput.style.width = "100px"; // Set width to around 100px
       
       const notesInput = document.createElement("input");
       notesInput.type = "text";
@@ -109,6 +114,7 @@
       unitStrip.appendChild(callsignInput);
       unitStrip.appendChild(statusSelect);
       unitStrip.appendChild(locationInput);
+      unitStrip.appendChild(callInput);
       unitStrip.appendChild(notesInput);
       unitStrip.appendChild(deleteButton);
       
