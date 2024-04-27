@@ -20,8 +20,14 @@ function createUnitStrip(callsign) {
   
   const statusSelect = document.createElement("select");
   // Add options to status dropdown
-  // Example: statusSelect.innerHTML = `<option value="available">Available</option>`;
-
+  const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+  statusOptions.forEach(option => {
+    const statusOption = document.createElement("option");
+    statusOption.value = option.toLowerCase().replace(" ", "-");
+    statusOption.textContent = option;
+    statusSelect.appendChild(statusOption);
+  });
+  
   const notesInput = document.createElement("input");
   notesInput.type = "text";
   notesInput.placeholder = "Enter notes";
