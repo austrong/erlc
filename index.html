@@ -1,17 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dispatch</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div id="unitInput">
-      <input type="text" id="callsignInput" placeholder="Unit Callsign">
-    </div>
-    <div id="unitStrips"></div>
-	<script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dispatch</title>
+  <style>
+    .unitStrip {
+      margin-bottom: 10px;
+    }
+    
+    .unitStrip input[type="text"],
+    .unitStrip select {
+      margin-right: 10px;
+    }
+    
+    #callsignInput {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="unitInput">
+    <input type="text" id="callsignInput" placeholder="Unit Callsign">
+  </div>
+  <div id="unitStrips"></div>
+  <script>
+    // Store unit strips
+    let unitStrips = [];
+
+    // Function to create a new unit strip
+    function createUnitStrip(callsign) {
+      // Check if maximum limit reached
+      if (unitStrips.length >= 40) {
+        alert("Maximum limit of unit strips reached.");
+        return;
+      }
+      
+      // Create HTML elements
+      const unitStrip = document.createElement("div");
+      unitStrip.className = "unitStrip";
+      
+      const callsignInput = document.createElement("input");
+      callsignInput.type = "text";
+      callsignInput.value = callsign;
+      callsignInput.readOnly = true;
+      
+      const statusSelect = document.createElement("select");
+      // Add options to status dropdown
+      const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+      statusOptions.forEach(option => {
+        const statusOption = document.createElement("option");
+        statusOption.value = option.toLowerCase().replace(" ", "-");
+        statusOption.textContent = option;
+        statusSelect.appendChild(statusOption);
+      });
+
+      // Add event listener to the status dropdown
+      statusSelect.addEventListener("change", function() {
+        if (statusSelect.value === "panic") {
+          statusSelect.style.backgroundColor = "orange";
+        } else {
+          statusSelect.style.backgroundColor = ""; // Reset background color
+        }
+      });
+      
+      const locationInput = document.createElement("input");
+      locationInput.type = "text";
+      locationInput.placeholder = "Location";
+      locationInput.style.width = "100px"; // Set width to around 100px
+      
+      const notesInput = document.createElement("input");
+      notesInput.type = "text";
+      notesInput.placeholder = "Enter notes";
+      notesInput.style.width = "100px"; // Set width to around 100px
+      
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        // Remove unit strip from array
+        unitStrips.splice(unitStrips.indexOf(unitStrip), 1);
+        // Remove unit strip from view
+        unitStrip.remove();
+      };
+      
+      // Append elements to unit strip
+      unitStrip.appendChild(callsignInput);
+      unitStrip.appendChild(statusSelect);
+      unitStrip.appendChild(locationInput);
+      unitStrip.appendChild(notesInput);
+      unitStrip.appendChild(deleteButton);
+      
+      // Append unit strip to container
+      document.getElementById("unitStrips").appendChild(unitStrip);
+      
+      // Add unit strip to array
+      unitStrips.push(unitStrip);
+    }
+
+    // Event listener for adding unit strip
+    document.getElementById("callsignInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        const callsign = e.target.value.trim();
+        if (callsign !== "") {
+          createUnitStrip(callsign);
+          e.target.value = ""; // Clear input
+        }
+      }
+    });
+  </script>
+</body>
 </html>
