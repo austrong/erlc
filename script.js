@@ -1,6 +1,3 @@
-// Store unit strips
-let unitStrips = [];
-
 // Function to create a new unit strip
 function createUnitStrip(callsign) {
   // Check if maximum limit reached
@@ -20,8 +17,14 @@ function createUnitStrip(callsign) {
   
   const statusSelect = document.createElement("select");
   // Add options to status dropdown
-  // Example: statusSelect.innerHTML = `<option value="available">Available</option>`;
-
+  const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+  statusOptions.forEach(option => {
+    const statusOption = document.createElement("option");
+    statusOption.value = option.toLowerCase().replace(" ", "-");
+    statusOption.textContent = option;
+    statusSelect.appendChild(statusOption);
+  });
+  
   const notesInput = document.createElement("input");
   notesInput.type = "text";
   notesInput.placeholder = "Enter notes";
@@ -47,14 +50,3 @@ function createUnitStrip(callsign) {
   // Add unit strip to array
   unitStrips.push(unitStrip);
 }
-
-// Event listener for adding unit strip
-document.getElementById("callsignInput").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    const callsign = e.target.value.trim();
-    if (callsign !== "") {
-      createUnitStrip(callsign);
-      e.target.value = ""; // Clear input
-    }
-  }
-});
