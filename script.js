@@ -28,6 +28,11 @@ function createUnitStrip(callsign) {
     statusSelect.appendChild(statusOption);
   });
   
+  const locationInput = document.createElement("input");
+  locationInput.type = "text";
+  locationInput.placeholder = "Location";
+  locationInput.style.width = "75%";
+  
   const notesInput = document.createElement("input");
   notesInput.type = "text";
   notesInput.placeholder = "Enter notes";
@@ -44,6 +49,7 @@ function createUnitStrip(callsign) {
   // Append elements to unit strip
   unitStrip.appendChild(callsignInput);
   unitStrip.appendChild(statusSelect);
+  unitStrip.appendChild(locationInput);
   unitStrip.appendChild(notesInput);
   unitStrip.appendChild(deleteButton);
   
