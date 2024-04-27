@@ -61,19 +61,23 @@
         switch (statusSelect.value) {
           case "panic":
             statusSelect.style.backgroundColor = "orange";
+            statusSelect.style.color = "black"; // Set text color to black
             break;
           case "available":
             statusSelect.style.backgroundColor = "lightgreen";
+            statusSelect.style.color = "black"; // Set text color to black
             break;
           case "enroute":
             statusSelect.style.backgroundColor = "lightblue";
+            statusSelect.style.color = "black"; // Set text color to black
             break;
           case "on-scene":
-            statusSelect.style.backgroundColor = "lightred";
+            statusSelect.style.backgroundColor = "red";
+            statusSelect.style.color = "black"; // Set text color to black
             break;
           case "unavailable":
             statusSelect.style.backgroundColor = "black";
-            statusSelect.style.color = "white";
+            statusSelect.style.color = "white"; // Set text color to white
             break;
           default:
             statusSelect.style.backgroundColor = ""; // Reset background color
