@@ -17,19 +17,11 @@ function createUnitStrip(callsign) {
   
   const statusSelect = document.createElement("select");
   // Add options to status dropdown
-  const statusOptions = [
-    { value: "panic", label: "Panic", color: "#FFA500", textColor: "white" },
-    { value: "available", label: "Available", color: "LightGreen", textColor: "black" },
-    { value: "enroute", label: "Enroute", color: "LightBlue", textColor: "black" },
-    { value: "onscene", label: "On Scene", color: "LightCoral", textColor: "black" },
-    { value: "unavailable", label: "Unavailable", color: "black", textColor: "white" }
-  ];
-  statusOptions.forEach(optionData => {
+  const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+  statusOptions.forEach(option => {
     const statusOption = document.createElement("option");
-    statusOption.value = optionData.value;
-    statusOption.textContent = optionData.label;
-    statusOption.style.backgroundColor = optionData.color;
-    statusOption.style.color = optionData.textColor;
+    statusOption.value = option.toLowerCase().replace(" ", "-");
+    statusOption.textContent = option;
     statusSelect.appendChild(statusOption);
   });
   
