@@ -31,6 +31,10 @@ function createUnitStrip(callsign) {
   const notesInput = document.createElement("input");
   notesInput.type = "text";
   notesInput.placeholder = "Notes";
+
+  const vehicleInput = document.createElement("input");
+  vehicleInput.type = "text";
+  vehicleInput.placeholder = "Vehicle";
   
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
