@@ -20,7 +20,7 @@ function createUnitStrip(callsign) {
   
   const statusSelect = document.createElement("select");
   // Add options to status dropdown
-  const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+  const statusOptions = ["Status", "Panic", "Available", "Enroute", "On Scene", "Unavailable"];
   statusOptions.forEach(option => {
     const statusOption = document.createElement("option");
     statusOption.value = option.toLowerCase().replace(" ", "-");
@@ -30,7 +30,7 @@ function createUnitStrip(callsign) {
   
   const notesInput = document.createElement("input");
   notesInput.type = "text";
-  notesInput.placeholder = "Enter notes";
+  notesInput.placeholder = "Notes";
   
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
