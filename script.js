@@ -20,7 +20,7 @@ function createUnitStrip(callsign) {
   
   const statusSelect = document.createElement("select");
   // Add options to status dropdown
-  const statusOptions = ["Status", "Panic", "Available", "Enroute", "On Scene", "Unavailable"];
+  const statusOptions = ["Panic", "Available", "Enroute", "On Scene", "Unavailable"];
   statusOptions.forEach(option => {
     const statusOption = document.createElement("option");
     statusOption.value = option.toLowerCase().replace(" ", "-");
@@ -44,7 +44,8 @@ function createUnitStrip(callsign) {
   // Function to handle status change
   function handleStatusChange() {
     const selectedStatus = statusSelect.value;
-    unitStrip.style.backgroundColor = getStatusColor(selectedStatus);
+    statusSelect.style.backgroundColor = getStatusColor(selectedStatus);
+    statusSelect.style.color = getTextColor(selectedStatus);
   }
   
   // Event listener for status change
@@ -63,7 +64,7 @@ function createUnitStrip(callsign) {
   unitStrips.push(unitStrip);
 }
 
-// Function to get status color
+// Function to get status background color
 function getStatusColor(status) {
   switch (status) {
     case "Panic":
@@ -72,13 +73,18 @@ function getStatusColor(status) {
       return "#7dff97"; // Light Green
     case "Enroute":
       return "#f6ff7d"; // Light Yellow
-    case "On-Scene":
+    case "On Scene":
       return "#7dcdff"; // Light Blue
     case "Unavailable":
       return "black"; // Black
     default:
       return "white"; // White
   }
+}
+
+// Function to get text color based on status
+function getTextColor(status) {
+  return status === "Unavailable" ? "white" : "black";
 }
 
 // Event listener for adding unit strip
