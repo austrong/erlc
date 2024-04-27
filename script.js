@@ -48,8 +48,8 @@ function createUnitStrip(callsign) {
   // Append elements to unit strip
   unitStrip.appendChild(callsignInput);
   unitStrip.appendChild(statusSelect);
-  unitStrip.appendChild(notesInput);
   unitStrip.appendChild(vehicleInput);
+  unitStrip.appendChild(notesInput);
   unitStrip.appendChild(deleteButton);
   
   // Append unit strip to container
