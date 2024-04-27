@@ -30,7 +30,7 @@ function createUnitStrip(callsign) {
   
   const notesInput = document.createElement("input");
   notesInput.type = "text";
-  notesInput.placeholder = "Notes";
+  notesInput.placeholder = "Enter notes";
   
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
@@ -40,6 +40,15 @@ function createUnitStrip(callsign) {
     // Remove unit strip from view
     unitStrip.remove();
   };
+  
+  // Function to handle status change
+  function handleStatusChange() {
+    const selectedStatus = statusSelect.value;
+    unitStrip.style.backgroundColor = getStatusColor(selectedStatus);
+  }
+  
+  // Event listener for status change
+  statusSelect.addEventListener("change", handleStatusChange);
   
   // Append elements to unit strip
   unitStrip.appendChild(callsignInput);
@@ -52,6 +61,24 @@ function createUnitStrip(callsign) {
   
   // Add unit strip to array
   unitStrips.push(unitStrip);
+}
+
+// Function to get status color
+function getStatusColor(status) {
+  switch (status) {
+    case "Panic":
+      return "#ffa500"; // Orange
+    case "Available":
+      return "#7dff97"; // Light Green
+    case "Enroute":
+      return "#f6ff7d"; // Light Yellow
+    case "On-Scene":
+      return "#7dcdff"; // Light Blue
+    case "Unavailable":
+      return "black"; // Black
+    default:
+      return "white"; // White
+  }
 }
 
 // Event listener for adding unit strip
