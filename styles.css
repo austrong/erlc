@@ -1,1 +1,9 @@
+.unitStrip {
+  margin-bottom: 10px;
+}
+
+.unitStrip input[type="text"],
+.unitStrip select {
+  margin-right: 10px;
+}
 
