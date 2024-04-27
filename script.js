@@ -41,16 +41,6 @@ function createUnitStrip(callsign) {
     unitStrip.remove();
   };
   
-  // Function to handle status change
-  function handleStatusChange() {
-    const selectedStatus = statusSelect.value;
-    statusSelect.style.backgroundColor = getStatusColor(selectedStatus);
-    statusSelect.style.color = getTextColor(selectedStatus);
-  }
-  
-  // Event listener for status change
-  statusSelect.addEventListener("change", handleStatusChange);
-  
   // Append elements to unit strip
   unitStrip.appendChild(callsignInput);
   unitStrip.appendChild(statusSelect);
@@ -62,29 +52,6 @@ function createUnitStrip(callsign) {
   
   // Add unit strip to array
   unitStrips.push(unitStrip);
-}
-
-// Function to get status background color
-function getStatusColor(status) {
-  switch (status) {
-    case "Panic":
-      return "#ffa500"; // Orange
-    case "Available":
-      return "#7dff97"; // Light Green
-    case "Enroute":
-      return "#f6ff7d"; // Light Yellow
-    case "On Scene":
-      return "#7dcdff"; // Light Blue
-    case "Unavailable":
-      return "black"; // Black
-    default:
-      return "white"; // White
-  }
-}
-
-// Function to get text color based on status
-function getTextColor(status) {
-  return status === "Unavailable" ? "white" : "black";
 }
 
 // Event listener for adding unit strip
