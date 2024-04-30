@@ -7,7 +7,7 @@
   <title>Dispatch</title>
   <style>
     .unitStrip {
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
     
     .unitStrip input[type="text"],
@@ -16,10 +16,12 @@
     }
     
     #callsignInput {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       border-radius: 15px;
       background-color: lightblue;
-      border: 4px black solid;
+      border: 2px black solid;
+      height: 40px;
+      width: 75px;
     }
   </style>
 </head>
@@ -48,6 +50,7 @@
       callsignInput.type = "text";
       callsignInput.value = callsign;
       callsignInput.readOnly = true;
+      callsignInput.style.width = "75px";
       
       const statusSelect = document.createElement("select");
       // Add options to status dropdown
