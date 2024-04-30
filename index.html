@@ -7,12 +7,12 @@
   <title>Dispatch</title>
   <style>
     .unitStrip {
-      margin-bottom: 9px;
+      margin-bottom: 7px;
     }
     
     .unitStrip input[type="text"],
     .unitStrip select {
-      margin-right: 10px;
+      margin-right: 8px;
     }
     
     #callsignInput {
@@ -20,7 +20,7 @@
       border-radius: 15px;
       background-color: lightblue;
       border: 2px black solid;
-      height: 40px;
+      height: 25px;
       width: 75px;
     }
   </style>
@@ -35,7 +35,7 @@
     let unitStrips = [];
 
     // Function to create a new unit strip
-    function createUnitStrip(callsign) {
+    function createUnitStrip(callsign) {  
       // Check if maximum limit reached
       if (unitStrips.length >= 40) {
         alert("Maximum limit of unit strips reached.");
