@@ -98,7 +98,7 @@
       locationInput.placeholder = "Location";
       locationInput.style.width = "175px"; // Set width to around 175px
 
-            const callInput = document.createElement("input");
+      const callInput = document.createElement("input");
       callInput.type = "text";
       callInput.placeholder = "Call #";
       callInput.style.width = "50px"; // Set width to 50px
@@ -108,6 +108,11 @@
       notesInput.placeholder = "Notes";
       notesInput.style.width = "250px"; // Set width to 250px
       
+      const vehicleTypeInput = document.createElement("input");
+      vehicleTypeInput.type = "text";
+      vehicleTypeInput.placeholder = "Vehicle Type";
+      vehicleTypeInput.style.width = "100px"; // Set width to 100px
+
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
       deleteButton.onclick = function() {
@@ -123,6 +128,7 @@
       unitStrip.appendChild(locationInput);
       unitStrip.appendChild(callInput);
       unitStrip.appendChild(notesInput);
+      unitStrip.appendChild(vehicleTypeInput);
       unitStrip.appendChild(deleteButton);
       
       // Append unit strip to container
